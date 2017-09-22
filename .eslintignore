@@ -1,0 +1,9 @@
+flow-typed/npm/**
+coverage/**
+dist/**
+.history/**
+.next/**
+.vscode/**
+.idea/**
+
+src/test-markup.js
