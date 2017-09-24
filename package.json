@@ -25,6 +25,11 @@
     "node": ">=4"
   },
   "scripts": {
+    "flow:setup": "yarn && flow-typed install && flow-typed update",
+    "flow": "flow --show-all-errors",
+    "flow:watch": "flow-watch",
+    "flow:coverage": "flow coverage ./src/ --color",
+    "prepush": "yarn test && yarn run flow",
     "test": "jest",
     "test:watch": "yarn test --watch",
     "test:update": "yarn test --update",
@@ -33,11 +38,6 @@
     "lint:fix": "yarn lint --fix",
     "lint:staged": "yarn lint:fix -- --rule no-console:2 --rule no-debugger:2",
     "precommit": "lint-staged",
-    "prepush": "yarn test && yarn run flow",
-    "flow:setup": "yarn add --dev flow-bin flow-typed flow-watch && flow init && flow-typed install && flow-typed update",
-    "flow": "flow --show-all-errors",
-    "flow:watch": "flow-watch",
-    "flow:coverage": "flow coverage ./src/ --color",
     "eslintrc:check:yml": "eslint --print-config .eslintrc.yml | eslint-config-prettier-check",
     "eslintrc:yml-to-js": "echo '// generated file from .eslintrc.yml' > src/.eslintrc.js && echo 'module.exports = ' >> src/.eslintrc.js && yarn js-yaml .eslintrc.yml >> src/.eslintrc.js",
     "eslintrc:check:js": "eslint --print-config src/.eslintrc.js | eslint-config-prettier-check",
@@ -84,9 +84,6 @@
     "husky": "^0.14.3",
     "jest": "^21.1.0",
     "js-yaml": "^3.10.0",
-    "lint-staged": "^4.2.1"
-  },
-  "peerDependencies": {
-    "eslint": "^4.0.0"
+    "lint-staged": "^4.2.2"
   }
 }

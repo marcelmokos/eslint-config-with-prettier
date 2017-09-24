@@ -231,5 +231,4 @@ $RECYCLE.BIN/
 ### Custom .gitignore
 
 /flow-typed/npm
-.idea
 src/test-markup.output.js

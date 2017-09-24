@@ -66,7 +66,7 @@ Plugins:
 
 
 # running setup script
-###### !!!on your own risk!!!, commit before running and control output using diff if you like all the changes
+###### ✋!!!on your own risk!!!✋, commit before running the script and control the output using diff in version control.
 
 [setup.sh](https://github.com/marcelmokos/eslint-config-with-prettier/blob/master/setup.sh)
 ```bash
@@ -112,6 +112,7 @@ This script adds useful files into your project.
   ]
 }
 ```
+- [enzyme](https://www.npmjs.com/package/enzyme) component testing with settings for [jest-serializer-enzyme](https://www.npmjs.com/package/jest-serializer-enzyme)
 - [.flowconfig](https://github.com/marcelmokos/eslint-config-with-prettier/blob/master/.flowconfig)
 - npm flow scripts (scripts will be merged into package.json)
 ```json

@@ -7,13 +7,16 @@ function yes_or_no {
     read -p "$* [y/n]: " yn
     case $yn in
       [Yy]*) return 0 ;;
-      [Nn]*) echo "🔗 install aborted" ; return  1 ;;
+      [Nn]*) echo "👍 install aborted" ; return  1 ;;
     esac
   done
 }
 
+echo "🛑🛑🛑 !!!on your own risk!!! 🛑🛑🛑,
+💡 commit before running the script and control the output using diff in version control."
+
 function editorconfig {
-echo "🔗 adding .editorconfig"
+echo "👍 .editorconfig added"
 
 echo "# EditorConfig: http://EditorConfig.org
 # EditorConfig Properties: https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties
@@ -50,7 +53,7 @@ trim_trailing_whitespace = false" > .editorconfig
 editorconfig
 
 function babelrc {
-echo "🔗 adding .babelrc"
+echo "👍 .babelrc added"
 yarn add --dev babel-preset-react-app babel-plugin-styled-components
 
 echo '{
@@ -62,11 +65,11 @@ echo '{
 if [ ! -f .babelrc ]; then
   babelrc
 else
-  yes_or_no ".babelrc exist do you want override it" && babelrc
+  yes_or_no "💡 .babelrc exist do you want override it" && babelrc
 fi
 
 function eslintignore {
-echo "🔗 adding .eslintignore"
+echo "👍 .eslintignore added"
 echo "flow-typed/npm/**
 coverage/**
 dist/**
@@ -80,12 +83,12 @@ dist/**
 if [ ! -f .eslintignore ]; then
   eslintignore
 else
-  yes_or_no ".eslintignore exist do you want override it" && eslintignore
+  yes_or_no "💡 .eslintignore exist do you want override it" && eslintignore
 fi
 
 
 function prettierrc {
-echo "🔗 adding .prettierrc"
+echo "👍 .prettierrc added"
 echo "trailingComma: all
 bracketSpacing: false
 " > .prettierrc
@@ -94,11 +97,11 @@ bracketSpacing: false
 if [ ! -f .prettierrc ]; then
   prettierrc
 else
-  yes_or_no ".prettierrc exist do you want override it" && prettierrc
+  yes_or_no "💡 .prettierrc exist do you want override it" && prettierrc
 fi
 
 function prettierignore {
-echo "🔗 adding .prettierignore"
+echo "👍 .prettierignore added"
 echo "package.json
 " > .prettierignore
 }
@@ -106,14 +109,13 @@ echo "package.json
 if [ ! -f .prettierignore ]; then
   prettierignore
 else
-  yes_or_no ".prettierignore exist do you want override it" && prettierignore
+  yes_or_no "💡 .prettierignore exist do you want override it" && prettierignore
 fi
 
 
 function flowconfig {
-echo "🔗 adding .flowconfig"
+echo "👍 .flowconfig added"
 echo "[ignore]
-.*/node_modules/.*
 
 [include]
 
@@ -126,7 +128,7 @@ emoji=true
 }
 
 function gitignore {
-  echo "🔗 adding .gitingore"
+  echo "👍 .gitingore added"
 
   commonGitIgnore=$(curl -s https://www.gitignore.io/api/macos,linux,windows,node,jetbrains,sublimetext,visualstudiocode)
   currentGitIgnore=$(cat .gitignore)
@@ -142,7 +144,7 @@ $currentGitIgnore" > .gitignore
 
 grep -q www.gitignore.io .gitignore || gitignore
 
-echo "yarn add --dev eslint jest husky lint-staged"
+yarn add --dev eslint jest husky lint-staged prettier
 
 packagejson=$(cat package.json)
 addtopackagejson=$(echo '{
@@ -169,9 +171,28 @@ addtopackagejson=$(echo '{
   }
 }')
 
-echo "🔗 update package.json"
+echo "👍 package.json added with linting and testing"
 echo "$addtopackagejson
 $packagejson" | ./node_modules/.bin/json --deep-merge > package.json
+
+function enzyme {
+  yarn add --dev enzyme jest-serializer-enzyme
+
+  packagejson=$(cat package.json)
+  addtopackagejson=$(echo '{
+  "jest": {
+    "snapshotSerializers": [
+      "jest-serializer-enzyme"
+    ]
+  }
+}')
+
+  echo "👍 package.json added with enzyme snapshotSerializers"
+  echo "$addtopackagejson
+  $packagejson" | ./node_modules/.bin/json --deep-merge > package.json
+}
+
+yes_or_no "👌 Do you want to use enzyme for Component testing?" && enzyme
 
 function flow {
   yarn add --dev flow-bin flow-typed flow-watch
@@ -179,7 +200,7 @@ function flow {
   packagejson=$(cat package.json)
   addtopackagejson=$(echo '{
     "scripts": {
-      "flow:setup": "flow-typed install && flow-typed update",
+      "flow:setup": "yarn && flow-typed install && flow-typed update",
       "flow": "flow --show-all-errors",
       "flow:watch": "flow-watch",
       "flow:coverage": "flow coverage ./src/ --color",
@@ -187,16 +208,19 @@ function flow {
     }
   }')
 
-  echo "🔗 adding flow scripts to package.json"
+  echo "👍 package.json added with flow scripts"
   echo "$addtopackagejson
   $packagejson" | ./node_modules/.bin/json --deep-merge > package.json
 
+  yarn run flow:setup
 
   if [ ! -f .flowconfig ]; then
     flowconfig
   else
-    yes_or_no ".flowconfig exist do you want override it" && flowconfig
+    yes_or_no "💡 .flowconfig exist do you want override it" && flowconfig
   fi
 }
 
-yes_or_no "Do you want to use setup flow?" && flow
+yes_or_no "👌 Do you want to use setup flow?" && flow
+
+echo "🏁 thanks for running the script now check output using version control"

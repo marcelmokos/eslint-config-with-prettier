@@ -56,7 +56,7 @@ const object5 = {
   1: "test",
   2: "test",
 };
-const x = a => (1 ? 2 : 3);
+const x = a => (a ? 1 : 2);
 
 function testNewLineBeforeReturn(z) {
   const y = z;
