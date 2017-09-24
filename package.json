@@ -34,7 +34,7 @@
     "test:watch": "yarn test --watch",
     "test:update": "yarn test --update",
     "test:coverage": "yarn test --coverage",
-    "lint": "eslint \"src/**\" --cache",
+    "lint": "eslint . --cache",
     "lint:fix": "yarn lint --fix",
     "lint:staged": "yarn lint:fix -- --rule no-console:2 --rule no-debugger:2",
     "precommit": "lint-staged",

@@ -95,7 +95,7 @@ This script adds useful files into your project.
   "test:watch": "yarn test --watch",
   "test:update": "yarn test --update",
   "test:coverage": "yarn test --coverage",
-  "lint": "eslint \"src/**\" --cache",
+  "lint": "eslint . --cache",
   "lint:fix": "yarn lint --fix",
   "lint:staged": "yarn lint:fix --max-warnings=0",
   "precommit": "lint-staged",
@@ -117,7 +117,7 @@ This script adds useful files into your project.
 - npm flow scripts (scripts will be merged into package.json)
 ```json
 "scripts": {
-  "flow:setup": "flow-typed install && flow-typed update",
+  "flow:setup": "yarn && flow-typed install && flow-typed update",
   "flow": "flow --show-all-errors",
   "flow:watch": "flow-watch",
   "flow:coverage": "flow coverage ./src/ --color",
