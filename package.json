@@ -25,19 +25,17 @@
     "node": ">=4"
   },
   "scripts": {
-    "flow:setup": "yarn && flow-typed install && flow-typed update",
-    "flow": "flow --show-all-errors",
-    "flow:watch": "flow-watch",
-    "flow:coverage": "flow coverage ./src/ --color",
-    "prepush": "yarn test && yarn run flow",
     "test": "jest",
-    "test:watch": "yarn test --watch",
     "test:update": "yarn test --update",
     "test:coverage": "yarn test --coverage",
     "lint": "eslint . --cache",
     "lint:fix": "yarn lint --fix",
     "lint:staged": "yarn lint:fix -- --rule no-console:2 --rule no-debugger:2",
     "precommit": "lint-staged",
+    "prepush": "yarn test && yarn run flow",
+    "flow:setup": "yarn && flow-typed install && flow-typed update",
+    "flow": "flow --show-all-errors",
+    "flow:coverage": "flow coverage ./src/index.js --color && flow-coverage-report -i 'src/**/*.js' -x 'src/**/*.test.js' -x 'src/**/*.spec.js' -t html",
     "eslintrc:check:yml": "eslint --print-config .eslintrc.yml | eslint-config-prettier-check",
     "eslintrc:yml-to-js": "echo '// generated file from .eslintrc.yml' > src/.eslintrc.js && echo 'module.exports = ' >> src/.eslintrc.js && yarn js-yaml .eslintrc.yml >> src/.eslintrc.js",
     "eslintrc:check:js": "eslint --print-config src/.eslintrc.js | eslint-config-prettier-check",
@@ -62,8 +60,6 @@
   },
   "dependencies": {
     "babel-eslint": "^8.0.0",
-    "babel-plugin-styled-components": "^1.2.0",
-    "babel-preset-react-app": "^3.0.2",
     "eslint": "^4.7.2",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-config-prettier": "^2.5.0",
@@ -74,16 +70,18 @@
     "eslint-plugin-prettier": "^2.3.1",
     "eslint-plugin-react": "^7.3.0",
     "json": "^9.0.6",
-    "prettier": "^1.7.0"
+    "prettier": "^1.7.2"
   },
   "devDependencies": {
+    "babel-plugin-styled-components": "^1.2.0",
+    "babel-preset-env": "^1.6.0",
     "coveralls": "^2.13.1",
     "flow-bin": "^0.55.0",
+    "flow-coverage-report": "^0.3.0",
     "flow-typed": "^2.1.5",
-    "flow-watch": "^1.1.1",
     "husky": "^0.14.3",
-    "jest": "^21.1.0",
+    "jest": "^21.2.1",
     "js-yaml": "^3.10.0",
-    "lint-staged": "^4.2.2"
+    "lint-staged": "^4.2.3"
   }
 }

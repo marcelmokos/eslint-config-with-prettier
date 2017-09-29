@@ -1,4 +1,13 @@
 {
   "plugins": ["babel-plugin-styled-components"],
-  "presets": ["react-app"]
+  "presets": [
+    ["env", {
+      "targets": {
+        "node": "current",
+        "browsers": ["last 2 versions"]
+      },
+      "include": [],
+      "exclude": []
+    }]
+  ]
 }

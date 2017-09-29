@@ -68,7 +68,7 @@ Plugins:
 # running setup script
 ###### ✋!!!on your own risk!!!✋, commit before running the script and control the output using diff in version control.
 
-[setup.sh](https://github.com/marcelmokos/eslint-config-with-prettier/blob/master/setup.sh)
+[setup.sh](https://github.com/marcelmokos/eslint-config-with-prettier/blob/master/setup.sh) that run [gist]([setup.sh](https://gist.github.com/marcelmokos/8cb21782167f66847eb739790f2f0a06))
 ```bash
 bash ./node_modules/eslint-config-with-prettier/setup.sh
 ```
