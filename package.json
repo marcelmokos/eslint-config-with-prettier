@@ -53,7 +53,7 @@
       "lint:staged",
       "git add"
     ],
-    "*.{json,css}": [
+    "*.{json,css,scss,less}": [
       "prettier --write",
       "git add"
     ]
