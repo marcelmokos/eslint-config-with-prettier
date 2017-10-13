@@ -1,11 +1,10 @@
 [ignore]
-<PROJECT_ROOT>/node_modules/.*
 
 [include]
 
 [libs]
-flow-typed
+<PROJECT_ROOT>/flow-typed
 
 [options]
 emoji=true
-
+unsafe.enable_getters_and_setters=true

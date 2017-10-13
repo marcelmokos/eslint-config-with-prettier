@@ -1,5 +1,5 @@
+.idea/
 coverage/
 flow-typed/npm/
 .travis.yml
 .coveralls.yml
-.idea/
