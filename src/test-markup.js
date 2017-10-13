@@ -20,7 +20,7 @@ const ComponentText2 = () => <input text="some text" />
 const ComponentText3 = () => <input text={"some text"} />
 const ComponentText4 = () => <input text={"'some' text"} />
 const ComponentText5 = () => <input text={"'some' text"} />
-const ComponentText6 = () => <input text={'"some" text'} />
+const ComponentText6 = () => <input text='"some" text' />
 const ComponentText7 = (text) => <input text={"'some' " + text + " text"} />
 const ComponentText8 = (text) => <input text={`${text}`} />
 
