@@ -1,3 +1,4 @@
+// @flow
 import fs from "fs";
 
 describe("Eslint rules will output same markup", () => {
