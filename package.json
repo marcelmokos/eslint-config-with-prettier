@@ -61,8 +61,8 @@
   },
   "dependencies": {
     "babel-eslint": "^8.0.0",
-    "eslint": "^4.8.0",
-    "eslint-config-airbnb": "^16.0.0",
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.5.0",
     "eslint-plugin-flowtype": "^2.39.1",
     "eslint-plugin-import": "^2.7.0",
@@ -75,9 +75,9 @@
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.2.1",
-    "babel-preset-env": "^1.6.0",
+    "babel-preset-env": "^1.6.1",
     "coveralls": "^3.0.0",
-    "flow-bin": "^0.56.0",
+    "flow-bin": "^0.57.3",
     "flow-coverage-report": "^0.3.0",
     "flow-typed": "^2.2.0",
     "husky": "^0.14.3",
