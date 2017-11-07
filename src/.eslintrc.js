@@ -1,5 +1,5 @@
 // generated file from .eslintrc.yml
-module.exports = 
+module.exports =
 {
   "root": true,
   "parser": "babel-eslint",
