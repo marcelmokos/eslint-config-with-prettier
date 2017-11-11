@@ -35,13 +35,13 @@ const array4 = [
   "tree"]
 
 const object = {}
-const object1 = { 1: 'test'}
-const object2 = { 1: 'test' }
-const object3 = {1: 'test'}
-const object4 = {1: 'test', 2: "test"}
+const object1 = { "1": 'test'}
+const object2 = { '1': 'test' }
+const object3 = {'1': 'test'}
+const object4 = {"1": 'test', '2' : "test"}
 const object5 = {
-  1: 'test',
-  2: "test"
+  '1': 'test',
+  "2": "test"
 }
 const x = a =>
   a ?
@@ -61,6 +61,7 @@ type Y = {
 
 }
 
-type XY = X & Y & {z:string};
+type XY = X & Y;
+type XYZ = XY & {z:string};
 
 /* eslint-enable no-unused-vars */

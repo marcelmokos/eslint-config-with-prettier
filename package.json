@@ -37,7 +37,7 @@
     "flow": "flow --show-all-errors",
     "flow:coverage": "flow coverage ./src/index.js --color && flow-coverage-report -i 'src/**/*.js' -x 'src/**/*.test.js' -x 'src/**/*.spec.js' -t html",
     "eslintrc:check:yml": "eslint --print-config .eslintrc.yml | eslint-config-prettier-check",
-    "eslintrc:yml-to-js": "echo '// generated file from .eslintrc.yml\nmodule.exports =' > src/.eslintrc.js && yarn --silent run js-yaml .eslintrc.yml >> src/.eslintrc.js",
+    "eslintrc:yml-to-js": "echo '// generated file from .eslintrc.yml\nmodule.exports =' > src/.eslintrc.js && js-yaml .eslintrc.yml >> src/.eslintrc.js",
     "eslintrc:check:js": "eslint --print-config src/.eslintrc.js | eslint-config-prettier-check",
     "eslintrc:prepare": "yarn run eslintrc:check:yml && yarn run eslintrc:yml-to-js && yarn run eslintrc:check:js",
     "test-output:copy": "cat src/test-markup.js > src/test-markup.output.js",
