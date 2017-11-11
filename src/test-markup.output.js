@@ -1,3 +1,4 @@
+// @flow
 // eslint-disable-next-line
 import React from 'react'
 
@@ -63,5 +64,13 @@ function testNewLineBeforeReturn(z) {
 
   return y;
 }
+
+type X = {x: string};
+
+type Y = {
+  y: string,
+};
+
+type XY = X & Y & {z: string};
 
 /* eslint-enable no-unused-vars */
