@@ -4,6 +4,7 @@ module.exports =
   "root": true,
   "parser": "babel-eslint",
   "extends": [
+    "plugin:react/recommended",
     "plugin:flowtype/recommended",
     "plugin:jest/recommended",
     "airbnb",
@@ -42,7 +43,9 @@ module.exports =
   "parserOptions": {
     "ecmaVersion": 2017,
     "sourceType": "module",
-    "jsx": true
+    "ecmaFeatures": {
+      "jsx": true
+    }
   },
   "rules": {
     "prettier/prettier": [

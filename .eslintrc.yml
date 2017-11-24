@@ -3,6 +3,8 @@ root: true
 
 parser: babel-eslint
 extends:
+  # https://github.com/yannickcr/eslint-plugin-react
+  - plugin:react/recommended
   # https://github.com/gajus/eslint-plugin-flowtype
   - plugin:flowtype/recommended
   # https://www.npmjs.com/package/eslint-plugin-jest
@@ -46,7 +48,8 @@ globals:
 parserOptions:
   ecmaVersion: 2017
   sourceType: module
-  jsx: true
+  ecmaFeatures:
+    jsx: true
 
 rules:
   prettier/prettier:
