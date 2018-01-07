@@ -33,7 +33,8 @@
     "lint:staged": "yarn lint:fix -- --rule no-console:2 --rule no-debugger:2",
     "precommit": "yarn run eslintrc:prepare && lint-staged",
     "prepush": "yarn test && yarn run flow",
-    "flow:setup": "yarn && flow-typed install && flow-typed install jest@20",
+    "flow:setup": "yarn && flow-typed install",
+    "flow:update": "flow-typed update",
     "flow": "flow --show-all-errors",
     "flow:coverage": "flow coverage ./src/index.js --color && flow-coverage-report -i 'src/**/*.js' -x 'src/**/*.test.js' -x 'src/**/*.spec.js' -t html",
     "eslintrc:check:yml": "eslint --print-config .eslintrc.yml | eslint-config-prettier-check",
@@ -60,11 +61,11 @@
     ]
   },
   "dependencies": {
-    "babel-eslint": "^8.0.3",
-    "eslint": "^4.13.1",
+    "babel-eslint": "^8.1.2",
+    "eslint": "^4.15.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-flowtype": "^2.40.1",
+    "eslint-plugin-flowtype": "^2.41.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jest": "^21.5.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
@@ -74,14 +75,14 @@
     "prettier": "^1.9.2"
   },
   "devDependencies": {
-    "babel-plugin-styled-components": "^1.3.0",
+    "babel-plugin-styled-components": "^1.4.0",
     "babel-preset-env": "^1.6.1",
     "coveralls": "^3.0.0",
-    "flow-bin": "^0.61.0",
+    "flow-bin": "^0.63.1",
     "flow-coverage-report": "^0.4.0",
     "flow-typed": "^2.2.3",
     "husky": "^0.14.3",
-    "jest": "^21.2.1",
+    "jest": "^22.0.4",
     "js-yaml": "^3.10.0",
     "lint-staged": "^6.0.0"
   }
