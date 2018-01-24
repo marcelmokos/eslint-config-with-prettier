@@ -1,7 +1,7 @@
 {
   "name": "eslint-config-with-prettier",
   "description": "Eslint config with prettier",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "author": "Marcel Mokoš <https://github.com/marcelmokos>",
   "keywords": [
     "eslint",
