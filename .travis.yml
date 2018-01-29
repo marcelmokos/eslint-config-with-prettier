@@ -3,4 +3,5 @@ node_js:
   - '6'
   - '7'
   - '8'
+  - '9'
 script: "yarn run lint && yarn run test:coverage"
