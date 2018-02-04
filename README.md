@@ -92,14 +92,15 @@ This script adds useful files into your project.
 ```json
 "scripts": {
   "test": "jest",
+  "test:changed": "yarn test --onlyChanged --passWithNoTests --silent --runInBand",
   "test:watch": "yarn test --watch",
   "test:update": "yarn test --update",
-  "test:coverage": "yarn test --coverage",
+  "test:coverage": "yarn test --coverage --verbose --silent --runInBand",
   "lint": "eslint . --cache",
   "lint:fix": "yarn lint --fix",
   "lint:staged": "yarn lint:fix --max-warnings=0",
-  "precommit": "lint-staged",
-  "prepush": "yarn test"
+  "precommit": "lint-staged && yarn test:changed",
+  "prepush": "yarn test:coverage"
 },
 "lint-staged": {
   "*.{js,jsx}": [
@@ -109,6 +110,10 @@ This script adds useful files into your project.
   "*.{json,css,scss,less}": [
     "prettier --write",
     "git add"
+  ],
+  "*.{png,jpeg,jpg,gif,svg}": [
+    "imagemin-lint-staged",
+    "git add"
   ]
 }
 ```
@@ -117,10 +122,10 @@ This script adds useful files into your project.
 - npm flow scripts (scripts will be merged into package.json)
 ```json
 "scripts": {
-  "flow:setup": "yarn && flow-typed install && flow-typed update",
-  "flow": "flow --show-all-errors",
-  "flow:watch": "flow-watch",
+  "flow:update": "flow-typed update",
+  "flow": "flow",
+  "flow:errors": "flow --show-all-errors",
   "flow:coverage": "flow coverage ./src/ --color",
-  "prepush": "yarn test && yarn run flow"
+  "prepush": "yarn test:coverage && yarn run flow:errors"
 }
 ```

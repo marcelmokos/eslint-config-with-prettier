@@ -62,15 +62,15 @@
   },
   "dependencies": {
     "babel-eslint": "^8.2.1",
-    "eslint": "^4.16.0",
+    "eslint": "^4.17.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-flowtype": "^2.41.1",
+    "eslint-plugin-flowtype": "^2.42.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jest": "^21.7.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-prettier": "^2.5.0",
-    "eslint-plugin-react": "^7.5.1",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.6.1",
     "json": "^9.0.6",
     "prettier": "^1.10.2"
   },
@@ -78,12 +78,12 @@
     "babel-plugin-styled-components": "^1.5.0",
     "babel-preset-env": "^1.6.1",
     "coveralls": "^3.0.0",
-    "flow-bin": "^0.63.1",
+    "flow-bin": "^0.64.0",
     "flow-coverage-report": "^0.4.1",
-    "flow-typed": "^2.2.3",
+    "flow-typed": "^2.3.0",
     "husky": "^0.14.3",
     "jest": "^22.1.4",
     "js-yaml": "^3.10.0",
-    "lint-staged": "^6.0.1"
+    "lint-staged": "^6.1.0"
   }
 }
