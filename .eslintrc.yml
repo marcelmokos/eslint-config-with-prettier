@@ -79,8 +79,8 @@ rules:
 
   ### From error to warning ###
   # was not working when used with flow prop types
-  no-unused-vars: 1
-  react/no-unused-prop-types: 1
+  no-unused-vars: warn
+  react/no-unused-prop-types: warn
 
   ### ES6 ###
 
@@ -97,10 +97,10 @@ rules:
 
   # Require modules with a single export to use a default export
   # https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/prefer-default-export.md
-  import/prefer-default-export: 0 # airbnb default: 'error'
+  import/prefer-default-export: off # airbnb default: 'error'
 
   # https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/imports-first.md
-  import/first: 0 # airbnb default: ['error', 'absolute-first']
+  import/first: off # airbnb default: ['error', 'absolute-first']
 
   ### Debugging is allowed but not allowed to commit ###
   no-console: warn # airbnb default: 'error'
@@ -109,7 +109,7 @@ rules:
   ### React ###
   # do not force jsx use js
   # https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md
-  react/jsx-filename-extension: 0
+  react/jsx-filename-extension: off
 
   # Require stateless functions when not using lifecycle methods, setState or ref
   # https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-stateless-function.md
@@ -118,7 +118,7 @@ rules:
   # Enforce a defaultProps definition for every prop that is not a required prop
   # reason: function composition over default props
   # https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/require-default-props.md
-  react/require-default-props: 0 # airbnb default: 'error'
+  react/require-default-props: off # airbnb default: 'error'
 
   ### Removed rules
   # no longer defined

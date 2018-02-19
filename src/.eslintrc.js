@@ -64,8 +64,8 @@ module.exports =
         "variables": true
       }
     ],
-    "no-unused-vars": 1,
-    "react/no-unused-prop-types": 1,
+    "no-unused-vars": "warn",
+    "react/no-unused-prop-types": "warn",
     "yoda": [
       "error",
       "never",
@@ -77,13 +77,13 @@ module.exports =
       "error",
       "all"
     ],
-    "import/prefer-default-export": 0,
-    "import/first": 0,
+    "import/prefer-default-export": "off",
+    "import/first": "off",
     "no-console": "warn",
     "no-debugger": "warn",
-    "react/jsx-filename-extension": 0,
+    "react/jsx-filename-extension": "off",
     "react/prefer-stateless-function": "warn",
-    "react/require-default-props": 0,
+    "react/require-default-props": "off",
     "jsx-a11y/href-no-hash": "off"
   }
 }
