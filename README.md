@@ -69,6 +69,7 @@ Plugins:
 ###### ✋!!!on your own risk!!!✋, commit before running the script and control the output using diff in version control.
 
 [setup.sh](https://github.com/marcelmokos/eslint-config-with-prettier/blob/master/setup.sh) that run [gist](https://gist.github.com/marcelmokos/8cb21782167f66847eb739790f2f0a06)
+[example]((https://github.com/marcelmokos/eslint-config-with-prettier/blob/master/example))
 ```bash
 bash ./node_modules/eslint-config-with-prettier/setup.sh
 ```
@@ -83,12 +84,15 @@ This script adds useful files into your project.
 - [.eslintignore](https://github.com/marcelmokos/eslint-config-with-prettier/blob/master/.eslintignore)
 - [.prettierrc](https://github.com/marcelmokos/eslint-config-with-prettier/blob/master/.prettierrc)
 - [.gitignore](https://github.com/marcelmokos/eslint-config-with-prettier/blob/master/.gitignore)
-  - using gitignore.io: https://www.gitignore.io/api/macos,linux,windows,node,jetbrains,sublimetext,visualstudiocode
+  - using gitignore.io: https://www.gitignore.io/api/archive,macos,linux,windows,node,jetbrains,sublimetext,eclipse,netbeans,visualstudiocode
 - npm lint and test scripts (scripts will merge into package.json)
   - lint and pretty print
   - test
-  - precommit -> lint-staged for `*.js` and `*.json`,`*.css`,`*.scss`,`*.less`
-  - prepush -> test
+  - precommit -> lint-staged for 
+    - javascript:`*.js`,  `*.jsx`
+    - json and styles: `*.json`,`*.css`,`*.scss`,`*.less`
+    - images: `png`,`jpeg`,`jpg`,`gif`,`svg`
+  - prepush -> test:coverage and flow:errors
 ```json
 "scripts": {
   "test": "jest",
@@ -98,23 +102,25 @@ This script adds useful files into your project.
   "test:coverage": "yarn test --coverage --verbose --silent --runInBand",
   "lint": "eslint . --cache",
   "lint:fix": "yarn lint --fix",
-  "lint:staged": "yarn lint:fix --max-warnings=0",
+  "lint:staged": "eslint --fix --max-warnings=0",
   "precommit": "lint-staged && yarn test:changed",
   "prepush": "yarn test:coverage"
 },
 "lint-staged": {
-  "*.{js,jsx}": [
-    "lint:staged",
-    "git add"
-  ],
-  "*.{json,css,scss,less}": [
-    "prettier --write",
-    "git add"
-  ],
-  "*.{png,jpeg,jpg,gif,svg}": [
-    "imagemin-lint-staged",
-    "git add"
-  ]
+  "linters": {
+    "*.{js,jsx}": [
+      "yarn run lint:staged",
+      "git add"
+    ],
+    "*.{json,css,scss,less}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{png,jpeg,jpg,gif,svg}": [
+      "imagemin-lint-staged",
+      "git add"
+    ]
+  }
 }
 ```
 - [enzyme](https://www.npmjs.com/package/enzyme) component testing with settings for [jest-serializer-enzyme](https://www.npmjs.com/package/jest-serializer-enzyme)
@@ -122,10 +128,11 @@ This script adds useful files into your project.
 - npm flow scripts (scripts will be merged into package.json)
 ```json
 "scripts": {
+  "flow:setup": "yarn && flow-typed install",
   "flow:update": "flow-typed update",
   "flow": "flow",
   "flow:errors": "flow --show-all-errors",
-  "flow:coverage": "flow coverage ./src/ --color",
+  "flow:coverage": "flow coverage ./src/index.js --color && flow-coverage-report -i src/**/*.js -x src/**/*.test.js -x src/**/*.spec.js -t html",
   "prepush": "yarn test:coverage && yarn run flow:errors"
 }
 ```

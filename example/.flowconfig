@@ -1,0 +1,12 @@
+[ignore]
+
+<PROJECT_ROOT>/.idea/.*
+
+[include]
+
+[libs]
+flow-typed
+
+[options]
+emoji=true
+

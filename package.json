@@ -28,9 +28,9 @@
     "test": "jest",
     "test:update": "yarn test --update",
     "test:coverage": "yarn test --coverage",
-    "lint": "eslint . --cache",
+    "lint": "eslint /src --cache",
     "lint:fix": "yarn lint --fix",
-    "lint:staged": "yarn lint:fix -- --rule no-console:2 --rule no-debugger:2",
+    "lint:staged": "eslint --fix --max-warnings=0",
     "precommit": "yarn run eslintrc:prepare && lint-staged",
     "prepush": "yarn test && yarn run flow",
     "flow:setup": "yarn && flow-typed install",
@@ -48,26 +48,34 @@
     "prepublishOnly": "yarn run eslintrc:prepare",
     "release-patch": "npm version patch -m \"Upgrade to %s\" && npm publish",
     "release-minor": "npm version minor -m \"Upgrade to %s\" && npm publish",
-    "release-major": "npm version major -m \"Upgrade to %s\" && npm publish"
+    "release-major": "npm version major -m \"Upgrade to %s\" && npm publish",
+    "precreate-example": "rimraf example && mkdir example && cd example && yarn init --yes && yarn add file:../ --dev",
+    "create-example": "cd example && printf 'y\ny\ny\ny\ny\ny' | bash ./node_modules/eslint-config-with-prettier/setup.sh"
   },
   "lint-staged": {
-    "*.{js,jsx}": [
-      "lint:staged",
-      "git add"
-    ],
-    "*.{json,css,scss,less}": [
-      "prettier --write",
-      "git add"
-    ]
+    "linters": {
+      "*.{js,jsx}": [
+        "yarn run lint:staged",
+        "git add"
+      ],
+      "*.{json,css,scss,less}": [
+        "prettier --write",
+        "git add"
+      ],
+      "*.{png,jpeg,jpg,gif,svg}": [
+        "imagemin-lint-staged",
+        "git add"
+      ]
+    }
   },
   "dependencies": {
     "babel-eslint": "^8.2.2",
-    "eslint": "^4.18.2",
+    "eslint": "^4.19.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-flowtype": "^2.46.1",
     "eslint-plugin-import": "^2.9.0",
-    "eslint-plugin-jest": "^21.13.0",
+    "eslint-plugin-jest": "^21.15.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.7.0",
@@ -78,12 +86,13 @@
     "babel-plugin-styled-components": "^1.5.1",
     "babel-preset-env": "^1.6.1",
     "coveralls": "^3.0.0",
-    "flow-bin": "^0.66.0",
+    "flow-bin": "^0.68.0",
     "flow-coverage-report": "^0.5.0",
-    "flow-typed": "^2.3.0",
+    "flow-typed": "^2.4.0",
     "husky": "^0.14.3",
     "jest": "^22.4.2",
     "js-yaml": "^3.11.0",
-    "lint-staged": "^7.0.0"
+    "lint-staged": "^7.0.0",
+    "rifraf": "^2.0.3"
   }
 }

@@ -1,0 +1,68 @@
+{
+  "scripts": {
+    "flow:setup": "yarn && flow-typed install",
+    "flow:update": "flow-typed update",
+    "flow": "flow",
+    "flow:errors": "flow --show-all-errors",
+    "flow:coverage": "flow coverage ./src/index.js --color && flow-coverage-report -i src/**/*.js -x src/**/*.test.js -x src/**/*.spec.js -t html",
+    "prepush": "yarn test:coverage",
+    "test": "jest",
+    "test:changed": "yarn test --onlyChanged --passWithNoTests --silent --runInBand",
+    "test:watch": "yarn test --watch",
+    "test:update": "yarn test --update",
+    "test:coverage": "yarn test --coverage --verbose --silent --runInBand",
+    "lint": "eslint . --cache",
+    "lint:fix": "yarn lint --fix",
+    "lint:staged": "eslint --fix --max-warnings=0",
+    "precommit": "lint-staged && yarn test:changed"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "setupFiles": [
+      "raf/polyfill",
+      "<rootDir>/jest.setup.js"
+    ]
+  },
+  "lint-staged": {
+    "linters": {
+      "*.{js,jsx}": [
+        "yarn run lint:staged",
+        "git add"
+      ],
+      "*.{json,css,scss,less}": [
+        "prettier --write",
+        "git add"
+      ],
+      "*.{png,jpeg,jpg,gif,svg}": [
+        "imagemin-lint-staged",
+        "git add"
+      ]
+    }
+  },
+  "name": "example",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-plugin-styled-components": "^1.5.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react-app": "^3.1.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-react-intl": "^1.4.8",
+    "enzyme-to-json": "^3.3.3",
+    "eslint": "^4.19.0",
+    "eslint-config-with-prettier": "file:../",
+    "flow-bin": "^0.68.0",
+    "flow-coverage-report": "^0.5.0",
+    "flow-typed": "^2.4.0",
+    "husky": "^0.14.3",
+    "imagemin-lint-staged": "^0.3.0",
+    "jest": "^22.4.2",
+    "lint-staged": "^7.0.0",
+    "prettier": "^1.11.1",
+    "react-test-renderer": "^16.2.0"
+  }
+}

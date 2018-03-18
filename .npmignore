@@ -3,3 +3,4 @@ coverage/
 flow-typed/npm/
 .travis.yml
 .coveralls.yml
+example/
