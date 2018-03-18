@@ -99,7 +99,7 @@ This script adds useful files into your project.
   "test:changed": "yarn test --onlyChanged --passWithNoTests --silent --runInBand",
   "test:watch": "yarn test --watch",
   "test:update": "yarn test --update",
-  "test:coverage": "yarn test --coverage --verbose --silent --runInBand",
+  "test:coverage": "yarn test --coverage --verbose --silent --runInBand --passWithNoTests",
   "lint": "eslint . --cache",
   "lint:fix": "yarn lint --fix",
   "lint:staged": "eslint --fix --max-warnings=0",
