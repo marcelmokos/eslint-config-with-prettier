@@ -70,11 +70,11 @@
   },
   "dependencies": {
     "babel-eslint": "^8.2.2",
-    "eslint": "^4.19.0",
+    "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-flowtype": "^2.46.1",
-    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-import": "^2.10.0",
     "eslint-plugin-jest": "^21.15.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-prettier": "^2.6.0",
@@ -86,13 +86,13 @@
     "babel-plugin-styled-components": "^1.5.1",
     "babel-preset-env": "^1.6.1",
     "coveralls": "^3.0.0",
-    "flow-bin": "^0.68.0",
+    "flow-bin": "^0.69.0",
     "flow-coverage-report": "^0.5.0",
     "flow-typed": "^2.4.0",
     "husky": "^0.14.3",
-    "jest": "^22.4.2",
+    "jest": "^22.4.3",
     "js-yaml": "^3.11.0",
-    "lint-staged": "^7.0.0",
+    "lint-staged": "^7.0.2",
     "rifraf": "^2.0.3"
   }
 }
