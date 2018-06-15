@@ -74,4 +74,11 @@ type Y = {
 type XY = X & Y;
 type XYZ = XY & {z: string};
 
+const handleSizeValue = 1;
+const percentage = 1;
+
+const offset = (handleSizeValue / 2) * (1 - percentage / 0.5);
+
+export const mod = (dividend: number, divisor: number): number =>
+  ((dividend % divisor) + divisor) % divisor;
 /* eslint-enable no-unused-vars */
