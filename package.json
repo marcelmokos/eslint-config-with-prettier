@@ -28,7 +28,7 @@
     "test": "jest",
     "test:update": "yarn test --update",
     "test:coverage": "yarn test --coverage",
-    "lint": "eslint /src --cache",
+    "lint": "eslint src --cache",
     "lint:fix": "yarn lint --fix",
     "lint:staged": "eslint --fix --max-warnings=0",
     "precommit": "yarn run eslintrc:prepare && lint-staged",
