@@ -32,7 +32,7 @@
     "lint:fix": "yarn lint --fix",
     "lint:staged": "eslint --fix --max-warnings=0",
     "precommit": "yarn run eslintrc:prepare && lint-staged",
-    "prepush": "yarn test && yarn run flow",
+    "prepush": "yarn test",
     "flow:setup": "yarn && flow-typed install",
     "flow:update": "flow-typed update",
     "flow": "flow --show-all-errors",
