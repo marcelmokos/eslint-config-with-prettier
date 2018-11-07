@@ -48,7 +48,7 @@
     "release-minor": "npm version minor -m \"Upgrade to %s\" && npm publish",
     "release-major": "npm version major -m \"Upgrade to %s\" && npm publish",
     "precreate-example": "rimraf example && mkdir example && cd example && yarn init --yes && yarn add file:../ --dev",
-    "create-example": "cd example && printf 'y\ny\ny\ny\ny\ny' | bash ./node_modules/eslint-config-with-prettier/setup.sh"
+    "create-example": "cd example && bash ./node_modules/eslint-config-with-prettier/setup.sh -y"
   },
   "husky": {
     "hooks": {
@@ -98,6 +98,6 @@
     "jest": "^23.6.0",
     "js-yaml": "^3.12.0",
     "lint-staged": "^8.0.4",
-    "rifraf": "^2.0.3"
+    "rimraf": "^2.6.2"
   }
 }
