@@ -23,6 +23,8 @@ plugins:
   - flowtype
   # https://github.com/prettier/eslint-plugin-prettier
   - prettier
+  # https://github.com/erikdesjardins/eslint-plugin-dollar-sign
+  - dollar-sign
 
 settings:
   flowtype:
@@ -120,6 +122,15 @@ rules:
   # https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/require-default-props.md
   react/require-default-props: off # airbnb default: 'error'
 
+  # Require dollar sighn for some variables that holds jQuery objects
+  dollar-sign/dollar-sign:
+  - error
+  - ignoreProperties
+
   ### Removed rules
   # no longer defined
   jsx-a11y/href-no-hash: off
+
+  # was complaining about inline snapshots
+  no-irregular-whitespace:
+  - off
