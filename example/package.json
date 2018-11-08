@@ -14,6 +14,7 @@
     "lint": "eslint . --cache",
     "lint:fix": "yarn lint --fix",
     "lint:staged": "eslint --fix --max-warnings=0",
+    "prettier": "prettier --write *.{js,jsx,html,yaml,json,css,scss,less}",
     "precommit": "lint-staged && yarn test:changed"
   },
   "jest": {
@@ -52,11 +53,13 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "babel-plugin-styled-components": "^1.8.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react-app": "^6.1.0",
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.5",
+    "@babel/preset-env": "^7.1.5",
+    "@babel/preset-flow": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
     "enzyme": "^3.7.0",
-    "enzyme-adapter-react-16": "^1.6.0",
+    "enzyme-adapter-react-16": "^1.7.0",
     "enzyme-react-intl": "^2.0.3",
     "enzyme-to-json": "^3.3.4",
     "eslint": "^5.8.0",
