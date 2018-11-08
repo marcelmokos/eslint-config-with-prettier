@@ -11,6 +11,9 @@ charset = utf-8
 # Unix-style newlines with
 end_of_line = lf
 
+# Max line length
+max_line_length=80
+
 # 2 space indentation
 indent_size = 2
 indent_style = space

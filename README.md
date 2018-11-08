@@ -106,6 +106,12 @@ This script adds useful files into your project.
   "precommit": "lint-staged && yarn test:changed",
   "prepush": "yarn test:coverage"
 },
+"husky": {
+  "hooks": {
+    "pre-commit": "yarn precommit",
+    "pre-push": "yarn prepush"
+  }
+},
 "lint-staged": {
   "linters": {
     "*.{js,jsx}": [
