@@ -1,7 +1,7 @@
 {
   "name": "eslint-config-with-prettier",
   "description": "Eslint config with prettier",
-  "version": "4.2.0",
+  "version": "5.0.0",
   "author": "Marcel Mokoš <https://github.com/marcelmokos>",
   "keywords": [
     "eslint",
@@ -25,18 +25,24 @@
     "node": ">=6"
   },
   "scripts": {
+    "flow:setup": "yarn && flow-typed install",
+    "flow:update": "flow-typed update",
+    "flow": "flow --show-all-errors",
+    "flow:errors": "flow --show-all-errors",
+    "flow:coverage": "flow coverage ./src/index.js --color && flow-coverage-report -i 'src/**/*.js' -x 'src/**/*.test.js' -x 'src/**/*.spec.js' -t html",
+    "prepush": "yarn test",
     "test": "jest",
+    "test:changed": "yarn test --onlyChanged --passWithNoTests --silent --runInBand",
+    "test:watch": "yarn test --watch",
     "test:update": "yarn test --update",
     "test:coverage": "yarn test --coverage",
     "lint": "eslint src --cache",
     "lint:fix": "yarn lint --fix",
+    "lint:img": "find src -iname '*.gif' -o -iname '*.jpg' -o -iname '*.png' -o -iname '*.jpeg' -o -iname '*.svg' | xargs imagemin-lint-staged",
     "lint:staged": "eslint --fix --max-warnings=0",
+    "prettier": "prettier --write *.{js,jsx,html,md,mdx,yaml,json,css,scss,less}",
     "precommit": "yarn run eslintrc:prepare && lint-staged",
-    "prepush": "yarn test",
-    "flow:setup": "yarn && flow-typed install",
-    "flow:update": "flow-typed update",
-    "flow": "flow --show-all-errors",
-    "flow:coverage": "flow coverage ./src/index.js --color && flow-coverage-report -i 'src/**/*.js' -x 'src/**/*.test.js' -x 'src/**/*.spec.js' -t html",
+    "pretest": "yarn run eslintrc:prepare && yarn run test-output:prepare",
     "eslintrc:check:yml": "eslint --print-config .eslintrc.yml | eslint-config-prettier-check",
     "eslintrc:yml-to-js": "echo '// generated file from .eslintrc.yml\nmodule.exports =' > src/.eslintrc.js && js-yaml .eslintrc.yml >> src/.eslintrc.js",
     "eslintrc:check:js": "eslint --print-config src/.eslintrc.js | eslint-config-prettier-check",
@@ -44,13 +50,27 @@
     "test-output:copy": "cat src/test-markup.js > src/test-markup.output.js",
     "test-output:fix": "eslint --quiet --fix src/test-markup.output.js",
     "test-output:prepare": "yarn run test-output:copy && yarn run test-output:fix",
-    "pretest": "yarn run eslintrc:prepare && yarn run test-output:prepare",
     "prepublishOnly": "yarn run eslintrc:prepare",
     "release-patch": "npm version patch -m \"Upgrade to %s\" && npm publish",
     "release-minor": "npm version minor -m \"Upgrade to %s\" && npm publish",
     "release-major": "npm version major -m \"Upgrade to %s\" && npm publish",
     "precreate-example": "rimraf example && mkdir example && cd example && yarn init --yes && yarn add file:../ --dev",
-    "create-example": "cd example && printf 'y\ny\ny\ny\ny\ny' | bash ./node_modules/eslint-config-with-prettier/setup.sh"
+    "create-example": "cd example && bash ./node_modules/eslint-config-with-prettier/setup.sh -y"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "setupFiles": [
+      "raf/polyfill",
+      "<rootDir>/jest.setup.js"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn precommit",
+      "pre-push": "yarn prepush"
+    }
   },
   "lint-staged": {
     "linters": {
@@ -58,7 +78,7 @@
         "yarn run lint:staged",
         "git add"
       ],
-      "*.{json,css,scss,less}": [
+      "*.{html,md,mdx,yaml,json,css,scss,less}": [
         "prettier --write",
         "git add"
       ],
@@ -69,30 +89,45 @@
     }
   },
   "dependencies": {
-    "babel-eslint": "^8.2.6",
-    "eslint": "^5.2.0",
-    "eslint-config-airbnb": "^17.0.0",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-flowtype": "^2.50.0",
-    "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-jest": "^21.18.0",
-    "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-prettier": "^2.6.2",
-    "eslint-plugin-react": "^7.10.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "5.9.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-dollar-sign": "^1.0.1",
+    "eslint-plugin-flowtype": "^3.2.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^22.0.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-react": "^7.11.1",
     "json": "^9.0.6",
-    "prettier": "^1.14.0"
+    "prettier": "1.15.2"
   },
   "devDependencies": {
-    "babel-plugin-styled-components": "^1.5.1",
+    "@babel/cli": "7.1.5",
+    "@babel/core": "7.1.6",
+    "@babel/preset-env": "7.1.6",
+    "@babel/preset-flow": "7.0.0",
+    "@babel/preset-react": "7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "23.6.0",
+    "babel-plugin-styled-components": "^1.8.0",
     "babel-preset-env": "^1.7.0",
     "coveralls": "^3.0.2",
-    "flow-bin": "^0.77.0",
-    "flow-coverage-report": "^0.5.0",
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
+    "enzyme-react-intl": "^2.0.3",
+    "enzyme-to-json": "^3.3.4",
+    "flow-bin": "^0.86.0",
+    "flow-coverage-report": "^0.6.0",
     "flow-typed": "^2.5.1",
-    "husky": "^0.14.3",
-    "jest": "^23.4.2",
+    "husky": "1.1.4",
+    "imagemin-lint-staged": "0.3.0",
+    "jest": "23.6.0",
     "js-yaml": "^3.12.0",
-    "lint-staged": "^7.2.0",
-    "rifraf": "^2.0.3"
+    "lint-staged": "8.0.4",
+    "react-test-renderer": "^16.6.3",
+    "regenerator-runtime": "0.12.1",
+    "rimraf": "^2.6.2"
   }
 }
