@@ -4,6 +4,7 @@
 
 - removing support of [eslint-plugin-dollar-sign](https://www.npmjs.com/package/eslint-plugin-dollar-sign)
 - updated readme.md with instructions how to add it back
+- end of support for Node.js 6
 
 ## [1.0.3] - 2017-09-22
 

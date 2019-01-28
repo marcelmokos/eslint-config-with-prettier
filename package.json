@@ -22,7 +22,7 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=6"
+    "node": ">=8"
   },
   "scripts": {
     "flow:setup": "yarn && flow-typed install",
