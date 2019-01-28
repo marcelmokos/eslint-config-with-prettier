@@ -17,8 +17,7 @@ module.exports =
     "import",
     "jest",
     "flowtype",
-    "prettier",
-    "dollar-sign"
+    "prettier"
   ],
   "settings": {
     "flowtype": {
@@ -85,10 +84,6 @@ module.exports =
     "react/jsx-filename-extension": "off",
     "react/prefer-stateless-function": "warn",
     "react/require-default-props": "off",
-    "dollar-sign/dollar-sign": [
-      "error",
-      "ignoreProperties"
-    ],
     "jsx-a11y/href-no-hash": "off",
     "no-irregular-whitespace": [
       "off"
