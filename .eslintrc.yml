@@ -23,8 +23,6 @@ plugins:
   - flowtype
   # https://github.com/prettier/eslint-plugin-prettier
   - prettier
-  # https://github.com/erikdesjardins/eslint-plugin-dollar-sign
-  - dollar-sign
 
 settings:
   flowtype:
@@ -121,11 +119,6 @@ rules:
   # reason: function composition over default props
   # https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/require-default-props.md
   react/require-default-props: off # airbnb default: 'error'
-
-  # Require dollar sighn for some variables that holds jQuery objects
-  dollar-sign/dollar-sign:
-  - error
-  - ignoreProperties
 
   ### Removed rules
   # no longer defined

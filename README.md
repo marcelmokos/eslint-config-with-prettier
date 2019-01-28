@@ -72,6 +72,47 @@ Plugins:
 - [eslint-plugin-prettier](https://www.npmjs.com/package/eslint-plugin-prettier)
 - [eslint-plugin-react](https://www.npmjs.com/package/eslint-plugin-react)
 
+### adding support to [eslint-plugin-dollar-sign](https://www.npmjs.com/package/eslint-plugin-dollar-sign)
+
+- helpful for ES6 code that uses jQuery
+
+```yaml
+extends:
+  - eslint-config-with-prettier
+plugins:
+  # https://github.com/erikdesjardins/eslint-plugin-dollar-sign
+  - dollar-sign
+rules:
+  # Require dollar sign for some variables that holds jQuery objects
+  dollar-sign/dollar-sign:
+    - error
+    - ignoreProperties
+```
+
+- .eslintrc.js
+
+```js
+module.exports = {
+  extends: ["eslint-config-with-prettier"],
+  plugins: ["dollar-sign"],
+  rules: {
+    "dollar-sign/dollar-sign": ["error", "ignoreProperties"],
+  },
+};
+```
+
+- .eslintrc.json
+
+```json
+{
+  "extends": ["eslint-config-with-prettier"],
+  "plugins": ["dollar-sign"],
+  "rules": {
+    "dollar-sign/dollar-sign": ["error", "ignoreProperties"]
+  }
+}
+```
+
 # running setup script
 
 ###### ✋!!!on your own risk!!!✋, commit before running the script and control the output using diff in version control.
